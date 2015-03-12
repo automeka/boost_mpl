@@ -23,7 +23,7 @@
 #include <boost/mpl/base.hpp>
 #include <boost/mpl/eval_if.hpp>
 
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 
 namespace boost { namespace mpl {
 
@@ -38,7 +38,7 @@ struct erase_key_impl< aux::map_tag >
         : eval_if< 
               has_key_impl<aux::map_tag>::apply<Map,Key>
             , eval_if< 
-                  is_same< Key,typename Map::key_ > 
+                  std::is_same< Key,typename Map::key_ > 
                 , base<Map>
                 , identity< m_mask<Key,Map> >
                 >

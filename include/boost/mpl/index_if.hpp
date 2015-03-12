@@ -23,7 +23,7 @@
 #include <boost/mpl/void.hpp>
 #include <boost/mpl/aux_/na_spec.hpp>
 #include <boost/mpl/aux_/lambda_support.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 
 namespace boost { namespace mpl {
 
@@ -45,7 +45,7 @@ struct index_if
     typedef typename second<result_>::type result_iterator_;
 
     typedef typename if_<
-          is_same< result_iterator_,not_found_ >
+          std::is_same< result_iterator_,not_found_ >
         , void_
         , result_index_
         >::type type;

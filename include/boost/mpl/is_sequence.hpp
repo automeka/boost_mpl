@@ -35,7 +35,7 @@
 #   include <boost/type_traits/is_class.hpp>
 #endif
 
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 
 namespace boost { namespace mpl {
 
@@ -91,7 +91,7 @@ template<
       typename BOOST_MPL_AUX_NA_PARAM(T)
     >
 struct is_sequence
-    : not_< is_same< typename begin<T>::type, void_ > >
+    : not_< std::is_same< typename begin<T>::type, void_ > >
 {
     BOOST_MPL_AUX_LAMBDA_SUPPORT(1, is_sequence, (T))
 };

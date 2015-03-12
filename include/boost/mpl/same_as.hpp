@@ -18,7 +18,7 @@
 #include <boost/mpl/aux_/lambda_spec.hpp>
 #include <boost/mpl/aux_/config/forwarding.hpp>
 
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 
 namespace boost { namespace mpl {
 
@@ -27,11 +27,11 @@ struct same_as
 {
     template< typename T2 > struct apply
 #if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
-        : is_same<T1,T2>
+        : std::is_same<T1,T2>
     {
 #else
     {
-        typedef typename is_same<T1,T2>::type type;
+        typedef typename std::is_same<T1,T2>::type type;
 #endif
     };
 };
@@ -41,11 +41,11 @@ struct not_same_as
 {
     template< typename T2 > struct apply
 #if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
-        : not_< is_same<T1,T2> >
+        : not_< std::is_same<T1,T2> >
     {
 #else
     {
-        typedef typename not_< is_same<T1,T2> >::type type;
+        typedef typename not_< std::is_same<T1,T2> >::type type;
 #endif
     };
 };

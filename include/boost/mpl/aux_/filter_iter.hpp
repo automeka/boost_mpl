@@ -20,7 +20,7 @@
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/aux_/lambda_spec.hpp>
 #include <boost/mpl/aux_/config/ctps.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 
 namespace boost { namespace mpl {
 
@@ -124,7 +124,7 @@ template<
     >
 struct filter_iter
     : filter_iter_impl<
-          ::boost::is_same<Iterator,LastIterator>::value
+          std::is_same<Iterator,LastIterator>::value
         >::template result_< Iterator,LastIterator,Predicate >
 {
 };

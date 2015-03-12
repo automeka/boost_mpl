@@ -30,7 +30,7 @@
 #include <boost/mpl/aux_/lambda_support.hpp>
 #include <boost/mpl/aux_/msvc_eti_base.hpp>
 
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 
 namespace boost { namespace mpl {
 
@@ -50,8 +50,8 @@ struct equal_pred
     struct apply
     {
         typedef typename and_< 
-              not_< is_same<Iterator1,LastIterator1> >
-            , not_< is_same<Iterator2,LastIterator2> >
+              not_< std::is_same<Iterator1,LastIterator1> >
+            , not_< std::is_same<Iterator2,LastIterator2> >
             , aux::iter_apply2<Predicate,Iterator1,Iterator2>
             >::type type;
     };
@@ -81,8 +81,8 @@ struct equal_impl
     typedef typename fold_::iterator iter1_;
     typedef typename fold_::state iter2_;
     typedef and_<
-          is_same<iter1_,last1_>
-        , is_same<iter2_,last2_>
+          std::is_same<iter1_,last1_>
+        , std::is_same<iter2_,last2_>
         > result_;
 
     typedef typename result_::type type;
@@ -95,7 +95,7 @@ struct equal_impl
 template<
       typename BOOST_MPL_AUX_NA_PARAM(Sequence1)
     , typename BOOST_MPL_AUX_NA_PARAM(Sequence2)
-    , typename Predicate = is_same<_,_>
+    , typename Predicate = std::is_same<_,_>
     >
 struct equal
     : aux::msvc_eti_base< 

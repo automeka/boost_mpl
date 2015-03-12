@@ -24,7 +24,7 @@
 #include <boost/mpl/eval_if.hpp>
 #include <boost/mpl/aux_/na.hpp>
 
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 
 namespace boost { namespace mpl {
 
@@ -34,7 +34,7 @@ template<  typename Set, typename T > struct set_insert_impl
           has_key_impl<aux::set_tag>::apply<Set,T>
         , identity<Set>
         , eval_if< 
-              is_same< T,typename Set::last_masked_ > 
+              std::is_same< T,typename Set::last_masked_ > 
             , base<Set>
             , identity< s_item<T,typename Set::item_> >
             >

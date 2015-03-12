@@ -21,7 +21,7 @@
 #include <boost/mpl/aux_/config/ctps.hpp>
 
 #if defined(BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION)
-#   include <boost/type_traits/is_same.hpp>
+#   include <type_traits>
 #endif
 
 namespace boost { namespace mpl {
@@ -106,7 +106,7 @@ template<
     , typename Iterator2
     >
 struct joint_iter
-    : joint_iter_impl< is_same<Iterator1,LastIterator1>::value >
+    : joint_iter_impl< std::is_same<Iterator1,LastIterator1>::value >
         ::template result_<Iterator1,LastIterator1,Iterator2>
 {
 };

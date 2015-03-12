@@ -23,7 +23,7 @@
 #include <boost/mpl/aux_/config/forwarding.hpp>
 #include <boost/mpl/aux_/config/static_constant.hpp>
 
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 
 namespace boost { namespace mpl {
 
@@ -32,20 +32,20 @@ struct contains_impl
 {
     template< typename Sequence, typename T > struct apply
 #if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
-        : not_< is_same<
+        : not_< std::is_same<
               typename find<Sequence,T>::type
             , typename end<Sequence>::type
             > >
     {
 #else
     {
-        typedef not_< is_same<
+        typedef not_< std::is_same<
               typename find<Sequence,T>::type
             , typename end<Sequence>::type
             > > type;
 
         BOOST_STATIC_CONSTANT(bool, value = 
-              (not_< is_same<
+              (not_< std::is_same<
                   typename find<Sequence,T>::type
                 , typename end<Sequence>::type
                 > >::value)

@@ -20,7 +20,6 @@
 #include <boost/mpl/push_front.hpp>
 #include <boost/mpl/aux_/na_spec.hpp>
 #include <boost/mpl/aux_/traits_lambda_spec.hpp>
-#include <boost/type_traits/is_same.hpp>
 
 namespace boost { namespace mpl {
 

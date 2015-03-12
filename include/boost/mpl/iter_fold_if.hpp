@@ -28,7 +28,7 @@
 #include <boost/mpl/aux_/config/forwarding.hpp>
 #include <boost/mpl/aux_/config/workaround.hpp>
 
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 
 namespace boost { namespace mpl {
 
@@ -40,14 +40,14 @@ struct iter_fold_if_pred
     template< typename State, typename Iterator > struct apply
 #if !defined(BOOST_MPL_CFG_NO_NESTED_FORWARDING)
         : and_<
-              not_< is_same<Iterator,LastIterator> >
+              not_< std::is_same<Iterator,LastIterator> >
             , apply1<Predicate,Iterator>
             >
     {
 #else
     {
         typedef and_<
-              not_< is_same<Iterator,LastIterator> >
+              not_< std::is_same<Iterator,LastIterator> >
             , apply1<Predicate,Iterator>
             > type;
 #endif

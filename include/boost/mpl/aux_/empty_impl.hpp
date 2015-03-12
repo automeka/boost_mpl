@@ -17,7 +17,7 @@
 #include <boost/mpl/empty_fwd.hpp>
 #include <boost/mpl/begin_end.hpp>
 #include <boost/mpl/aux_/traits_lambda_spec.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 
 namespace boost { namespace mpl {
 
@@ -28,7 +28,7 @@ template< typename Tag >
 struct empty_impl
 {
     template< typename Sequence > struct apply
-        : is_same<
+        : std::is_same<
               typename begin<Sequence>::type
             , typename end<Sequence>::type
             >

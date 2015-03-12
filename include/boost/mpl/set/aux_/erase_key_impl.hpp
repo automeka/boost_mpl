@@ -23,7 +23,7 @@
 #include <boost/mpl/base.hpp>
 #include <boost/mpl/eval_if.hpp>
 
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 
 namespace boost { namespace mpl {
 
@@ -38,7 +38,7 @@ struct erase_key_impl< aux::set_tag >
         : eval_if< 
               has_key_impl<aux::set_tag>::apply<Set,T>
             , eval_if< 
-                  is_same< T,typename Set::item_type_ > 
+                  std::is_same< T,typename Set::item_type_ > 
                 , base<Set>
                 , identity< s_mask<T,typename Set::item_> >
                 >

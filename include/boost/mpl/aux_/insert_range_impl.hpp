@@ -25,8 +25,6 @@
 #include <boost/mpl/aux_/traits_lambda_spec.hpp>
 #include <boost/mpl/aux_/config/forwarding.hpp>
 
-#include <boost/type_traits/same_traits.hpp>
-
 namespace boost { namespace mpl {
 
 // default implementation; conrete sequences might override it by 

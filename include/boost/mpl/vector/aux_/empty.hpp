@@ -19,7 +19,7 @@
 #include <boost/mpl/vector/aux_/tag.hpp>
 #include <boost/mpl/aux_/config/typeof.hpp>
 #include <boost/mpl/aux_/config/ctps.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 
 namespace boost { namespace mpl {
 
@@ -29,7 +29,7 @@ template<>
 struct empty_impl< aux::vector_tag >
 {
     template< typename Vector > struct apply
-        : is_same<
+        : std::is_same<
               typename Vector::lower_bound_
             , typename Vector::upper_bound_
             >
